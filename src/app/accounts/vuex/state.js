@@ -7,7 +7,7 @@
 // };
 
 const STATE = {
-    accounts: null,
+    accounts: {},
 };
 
 export default STATE;

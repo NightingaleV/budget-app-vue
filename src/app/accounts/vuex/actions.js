@@ -6,7 +6,7 @@ import {
     UPDATE_ACCOUNT_BALANCE
 } from './mutation-types';
 
-import {default as mockup} from '@/../mockup_data';
+// import {default as mockup} from '@/../mockup_data';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import {requestConfig}from '../../../main'
@@ -19,12 +19,22 @@ import {requestConfig}from '../../../main'
 
 
 
-export function setAccounts({state, commit}) {
+export async function setAccounts({state, commit}) {
 
     if( !state.accounts || Object.keys(state.accounts).length === 0){
-        //Todo fetch accounts
-        let accounts = mockup.accounts
-        commit(SET_ACCOUNTS, accounts);
+        // Request Object
+        const requestBody = JSON.stringify({
+            user:'vito'
+        })
+
+        await axios.post('api/accounts/read_accounts.php', requestBody, requestConfig)
+            .then(res => {
+                let { payload } = res.data
+                commit(SET_ACCOUNTS, payload);
+            })
+            .catch(err => {
+                console.log(err)
+            });
     }
 }
 
