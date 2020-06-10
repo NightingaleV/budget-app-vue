@@ -86,7 +86,7 @@ export async function updateAccount({commit}, {user, data}) {
 }
 
 export async function updateAccountBalance({state, commit}, {accountId, amount}) {
-    // todo
+    // Calculate new balance
     let changingAccount = state.accounts[accountId]
     let accountBalance = parseFloat(changingAccount.balance);
     accountBalance += parseFloat(amount);

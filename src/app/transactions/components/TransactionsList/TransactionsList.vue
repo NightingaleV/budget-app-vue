@@ -49,7 +49,7 @@
                                 </td>
                                 <td><span class="subtitle is-5">{{ transaction.amount }} ,- CZK</span></td>
                                 <td>
-                                    <b-button size="sm" :to="{ name: 'UpdateTransaction', params: { accountId:accountId,transactionId: transaction.id } }" >
+                                    <b-button size="sm" :to="{ name: 'UpdateTransaction', params: { accountId:accountId, transactionId: transaction.id } }" >
                                         <b-icon icon="pencil" aria-hidden="true"></b-icon></b-button>
                                     <b-button size="sm" variant="danger" @click="deleteTransaction(transaction)" class="ml-2">
                                         <b-icon icon="trash-fill" aria-hidden="true"></b-icon></b-button>
@@ -104,13 +104,8 @@
             transactionList: function () {
                 return this.categoryId ? this.getTransactionsListByAccountFilterByCategory(this.accountId, this.categoryId)
                     : this.getTransactionsListByAccount(this.accountId)
-                // return this.getTransactionsListByAccountFilterByCategory(this.accountId, this.categoryId)
-                // return this.getTransactionsListByAccount(this.accountId)
 
-            },
-            // categoryBadge: function () {
-            //     return this.getNumberOfTransactionsInsideCategory(this.accountObject, this.categoryId)
-            // }
+            }
         }
     }
 </script>

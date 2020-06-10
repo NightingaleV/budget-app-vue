@@ -20,7 +20,7 @@ const routes = [
         props: true
     },
     {
-        path: '/transaction/update/:transactionId',
+        path: '/accounts/:accountId/transaction/update/:transactionId',
         name: 'UpdateTransaction',
         component: components.CreateUpdateTransaction,
         props: true

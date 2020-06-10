@@ -63,7 +63,7 @@
         },
         // Update Account
         mounted() {
-            this.setTransactions()
+            this.setTransactions(this.accountId);
             this.loadCategoriesIntoForm()
             if (this.transactionId) {
                 // if props exist then its considered update
@@ -157,7 +157,7 @@
             // Updating
             loadTransaction() {
                 let instance = this
-                this.setTransactions().then(() => {
+                this.setTransactions(this.accountId).then(() => {
                     let transactionToUpdate = instance.getTransactionById(instance.transactionId);
                     if (transactionToUpdate) {
                         instance.transactionObject = Object.assign(instance.transactionObject,transactionToUpdate)
