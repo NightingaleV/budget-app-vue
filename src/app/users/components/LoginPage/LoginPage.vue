@@ -35,9 +35,9 @@
                 </b-form>
             </b-card>
 
-            <b-card class="mt-3" header="Form Data Result">
-                <pre class="m-0">{{ credentialsObject }}</pre>
-            </b-card>
+<!--            <b-card class="mt-3" header="Form Data Result">-->
+<!--                <pre class="m-0">{{ credentialsObject }}</pre>-->
+<!--            </b-card>-->
         </div>
     </div>
 </template>

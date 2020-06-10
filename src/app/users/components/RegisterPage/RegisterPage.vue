@@ -13,7 +13,7 @@
                         <b-form-input
                                 id="input-1"
                                 v-model="userObject.email"
-                                type="text"
+                                type="email"
                                 required
                                 placeholder="johndoe@gmail.com"
                         ></b-form-input>
@@ -44,9 +44,9 @@
                 </b-form>
             </b-card>
 
-            <b-card class="mt-3" header="Form Data Result">
-                <pre class="m-0">{{ userObject }}</pre>
-            </b-card>
+<!--            <b-card class="mt-3" header="Form Data Result">-->
+<!--                <pre class="m-0">{{ userObject }}</pre>-->
+<!--            </b-card>-->
         </div>
     </div>
 </template>

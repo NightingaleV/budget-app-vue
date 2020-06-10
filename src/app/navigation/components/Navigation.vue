@@ -7,8 +7,10 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
+                    <div v-if="isUserAuthenticated">
+                        <b-nav-item :to="{ name: 'AccountsList' }">Accounts</b-nav-item>
+                    </div>
                     <b-nav-item :to="{ name: 'Home' }">Home</b-nav-item>
-                    <b-nav-item :to="{ name: 'AccountsList' }">Accounts</b-nav-item>
                 </b-navbar-nav>
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto" v-if="isUserAuthenticated">

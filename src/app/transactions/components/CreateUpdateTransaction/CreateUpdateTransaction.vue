@@ -20,7 +20,7 @@
                     </b-form-group>
 
                     <b-form-select v-model="selectedCategory" :options="options" multiple :select-size="4"></b-form-select>
-                    <div class="mt-3">Selected: <strong>{{ selectedCategory }}</strong></div>
+<!--                    <div class="mt-3">Selected: <strong>{{ selectedCategory }}</strong></div>-->
                     <b-form-group id="input-group-2" label="Transaction Amount:" label-for="input-2">
                         <b-form-input
                                 id="input-2"
@@ -35,10 +35,6 @@
                     <b-button type="submit" variant="primary">Submit</b-button>
                     <b-button type="reset" variant="danger" v-if="!editing">Reset</b-button>
                 </b-form>
-            </b-card>
-
-            <b-card class="mt-3" header="Form Data Result">
-                <pre class="m-0">{{ transactionObject }}</pre>
             </b-card>
         </div>
     </div>

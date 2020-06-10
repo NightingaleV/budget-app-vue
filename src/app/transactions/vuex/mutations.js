@@ -18,7 +18,7 @@ export default {
         state.transactions = payload;
         // Vue.set(state, 'accounts', payload)
         // Vue.set(state.accounts, payload. , payload)
-        // Object.values(state.accounts).forEach((o) => { o.balance = parseFloat(o.balance); });
+        Object.values(state.transactions).forEach((o) => { o.categories = [...new Set(o.categories)]; });
     },
     [SET_CATEGORIES](state, payload) {
         state.categories = payload;
