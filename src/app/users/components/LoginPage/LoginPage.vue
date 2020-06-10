@@ -77,44 +77,24 @@
             },
             login(){
                 console.log(this.credentialsObject)
-                this.loginUser(this.credentialsObject).then(()=>{
-                    this.resetAndGo();
+                this.loginUser(this.credentialsObject).then((res)=>{
+                    console.log(res)
+                    if(res.response === 'wrong_password'){
+                        this.showAlert = true
+                        this.alertMsg = 'Wrong password. Try again.'
+                    } else if (res.response === 'no_user'){
+                        this.showAlert = true
+                        this.alertMsg = 'No user with that username.'
+                    } else {
+                        this.resetAndGo();
+                    }
+
                 }).catch(err => {
                     console.log(err)
                     this.showAlert = true
                     this.alertMsg = err
                 })
 
-
-                // TODO request to api
-                // const body = JSON.stringify(this.credentialsObject);
-                // const config = {
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     timeout: 5000,
-                // };
-                // await axios
-                //     .post('api/user/login', body, config)
-                //     .then(res => {
-                //         const { token, user } = res.data;
-                //         timerAction.pauseTimer();
-                //         auth.signin({ token, user });
-                //         history.replace('/');
-                //     })
-                //     .catch(err => {
-                //         //If TimeOut
-                //         if (err.code === 'ECONNABORTED') {
-                //             setError({
-                //                 ...errors,
-                //                 backend: [{ msg: 'Lost connection, try it later.' }],
-                //             });
-                //         } else {
-                //             if (err.response.data) {
-                //                 setError({ ...errors, backend: err.response.data.errors });
-                //             }
-                //         }
-                //     });
             },
         },
         computed: {

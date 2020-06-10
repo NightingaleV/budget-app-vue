@@ -30,7 +30,7 @@
                     </b-form-group>
                     <b-form-group id="input-group-3" label="Password again:" label-for="input-2">
                         <b-form-input
-                                id="input-2"
+                                id="input-3"
                                 type="password"
                                 v-model="userObject.password2"
                                 required
@@ -81,20 +81,23 @@
             },
             onSubmit(evt) {
                 evt.preventDefault()
-                // alert(JSON.stringify(this.form))
-                // this.saveNewAccount()
                 if (this.userObject.password !== this.userObject.password2) {
                     this.alertMsg = 'You passwords are not the same, try again'
                     this.showAlert = true
                 } else {
-                    console.log(this.userObject)
                     this.register()
                 }
             },
-            register() {
-                console.log(this.credentialsObject)
-                this.registerUser(this.credentialsObject).then(() => {
-                    this.resetAndGo();
+            async register() {
+                console.log(this.userObject)
+                await this.registerUser(this.userObject).then((res) => {
+                    if(res.response === 'duplicated'){
+                        console.log(res);
+                        this.showAlert = true
+                        this.alertMsg = 'User with this email already exists. '
+                    } else {
+                        this.resetAndGo();
+                    }
                 }).catch(err => {
                     console.log(err)
                     this.showAlert = true

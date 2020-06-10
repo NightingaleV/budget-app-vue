@@ -9,7 +9,6 @@
                 <b-navbar-nav>
                     <b-nav-item :to="{ name: 'Home' }">Home</b-nav-item>
                     <b-nav-item :to="{ name: 'AccountsList' }">Accounts</b-nav-item>
-                    <b-nav-item :to="{ name: 'CreateAccount' }">Create account</b-nav-item>
                 </b-navbar-nav>
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto" v-if="isUserAuthenticated">

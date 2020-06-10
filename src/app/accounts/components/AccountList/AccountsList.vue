@@ -11,6 +11,7 @@
             <table class="table">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Account name</th>
                     <th>Balance</th>
                     <th></th>
@@ -19,15 +20,21 @@
                 <tbody>
                 <tr v-bind:key="account.id" v-for="(account) in getAccountsList">
                     <td>
+                        <b-icon :icon="account.balance >= 0 ? 'arrow-up-right' : 'arrow-down-right'" :variant="account.balance >= 0 ? 'success' : 'danger'"></b-icon>
+                    </td>
+                    <td>
                         <b-link :to="{name:'TransactionsList', params: {accountId: account.id}}"><span
                                 class="subtitle is-5">{{ account.name }}</span></b-link>
 
                     </td>
                     <td><span class="subtitle is-5">{{ account.balance }} ,- CZK</span></td>
                     <td>
-                        <b-button size="sm" :to="{ name: 'UpdateAccount', params: { accountId: account.id } }">Edit
+                        <b-button size="sm" :to="{ name: 'UpdateAccount', params: { accountId: account.id } }">
+                            <b-icon icon="pencil" aria-hidden="true"></b-icon>
                         </b-button>
-                        <b-button size="sm" variant="danger" @click="deleteAccount(account)">Remove</b-button>
+                        <b-button size="sm" variant="danger" @click="deleteAccount(account)" class="ml-2">
+                            <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
+                        </b-button>
                         <!--                        <a class="button is-danger" @click="confirmDeleteAccount(account)">Delete</a>-->
                     </td>
                 </tr>

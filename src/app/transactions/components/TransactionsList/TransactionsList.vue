@@ -1,19 +1,16 @@
 <template>
     <div id="transaction-list-view">
         <main class="level">
-            <header class="d-flex justify-content-center align-items-center">
+            <header class="d-flex justify-content-center align-items-center mb-4">
                 <h1 class="title is-2">{{ getAccountById(accountId).name }}: {{ getAccountById(accountId).balance }}</h1>
-                <b-button ID="createTransactionBtn" pill variant="primary" size="sm" :to="{ name: 'CreateTransaction', params: {accountId:accountId} }"
-                          class="d-block">+ Add
+                <b-button ID="createTransactionBtn" pill variant="primary" size="md" :to="{ name: 'CreateTransaction', params: {accountId:accountId} }"
+                          class="d-block ml-3">+ Add
                 </b-button>
 <!--                Todo Create toggle for transaction creation-->
 <!--                <b-button ID="createTransactionBtn" pill variant="primary" size="sm" v-b-toggle.my-collapse-->
 <!--                          class="d-block">+ Add-->
 <!--                </b-button>-->
             </header>
-            <b-card class="mt-3" header="Form Data Result">
-<!--                <pre class="m-0">{{ accountObject }}</pre>-->
-            </b-card>
             <main>
 
                 <div class="row">
@@ -46,15 +43,15 @@
                             </thead>
                             <tbody>
                             <tr v-bind:key="transaction.id" v-for="(transaction) in transactionList">
-                                <td><b-icon icon="circle" :variant="transaction.amount >= 0 ? 'success' : 'danger'"></b-icon></td>
+                                <td><b-icon icon="circle-fill" :variant="transaction.amount >= 0 ? 'success' : 'danger'"></b-icon></td>
                                 <td>
                                     <span class="subtitle is-5">{{ transaction.title }}</span>
                                 </td>
                                 <td><span class="subtitle is-5">{{ transaction.amount }} ,- CZK</span></td>
                                 <td>
-                                    <b-button size="sm" :to="{ name: 'UpdateTransaction', params: { accountId:accountId,transactionId: transaction.id } }">
+                                    <b-button size="sm" :to="{ name: 'UpdateTransaction', params: { accountId:accountId,transactionId: transaction.id } }" >
                                         <b-icon icon="pencil" aria-hidden="true"></b-icon></b-button>
-                                    <b-button size="sm" variant="danger" @click="deleteTransaction(transaction)">
+                                    <b-button size="sm" variant="danger" @click="deleteTransaction(transaction)" class="ml-2">
                                         <b-icon icon="trash-fill" aria-hidden="true"></b-icon></b-button>
                                 </td>
                             </tr>

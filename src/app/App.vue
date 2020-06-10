@@ -1,13 +1,7 @@
 <template>
     <div id="app">
         <Navigation></Navigation>
-        <h1>Hello</h1>
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/aboutme">About</router-link>
-            <b-link :to="{ name: 'AccountsList' }">accountsList</b-link>
-        </div>
-        <div class="container">
+        <div class="container mt-5">
             <router-view></router-view>
         </div>
 
