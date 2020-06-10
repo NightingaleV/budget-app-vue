@@ -47,7 +47,6 @@ if ($payload) {
     echo print_r( $params);
 
     $stmt2->bind_param($types, ...$params);
-    echo $types;
 
     $stmt2->execute();
     $error = $db->error;
@@ -62,7 +61,7 @@ if ($payload) {
     // $result = $stmt2->get_result();
     // $stmt2->close();
 
-    Send a response
+    // Send a response
     $responseData = new \stdClass();;
     if ($error) {
         echo $error;
