@@ -23,7 +23,7 @@
                                 <span class="mr-auto">Account</span>
                                 <b-badge variant="success" pill>{{ getTransactionsListByAccount(accountId).length }}</b-badge>
                             </b-list-group-item>
-                            <b-list-group-item class="d-flex align-items-center" v-bind:key="category.id" v-for="category in categories"
+                            <b-list-group-item class="d-flex align-items-center" v-bind:key="category.id" v-for="category in getCategories"
                                                :to="{ name: 'TransactionsListByCategory', params: { accountId:accountId,categoryId: category.id } }">
                                 <b-avatar :icon="category.icon" aria-hidden="true" scale="1" class="rounded-circle " variant="light"></b-avatar>
                                 <span class="mr-auto">{{ category.title }}</span>
@@ -87,11 +87,12 @@
             ...mapActions([
                 'setTransactions',
                 'deleteTransaction',
-                'setAccounts'
+                'setAccounts','setCategories'
             ]),
         },
         mounted() {
-            this.setAccounts()
+            this.setAccounts();
+            this.setCategories();
             this.setTransactions(this.accountId);
         },
         computed: {
@@ -100,7 +101,7 @@
             }),
             ...mapGetters(['getTransactionsListByAccount', 'getAccountById',
             'getNumberOfTransactionsInsideCategory',
-                'getTransactionsListByAccountFilterByCategory']),
+                'getTransactionsListByAccountFilterByCategory','getCategories']),
             transactionList: function () {
                 return this.categoryId ? this.getTransactionsListByAccountFilterByCategory(this.accountId, this.categoryId)
                     : this.getTransactionsListByAccount(this.accountId)

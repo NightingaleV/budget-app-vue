@@ -3,7 +3,7 @@ import {
     CREATE_TRANSACTION,
     UPDATE_TRANSACTION,
     // UPDATE_TRANSACTION_AMOUNT,
-    DELETE_TRANSACTION,
+    DELETE_TRANSACTION, SET_CATEGORIES,
 } from './mutation-types';
 
 // import {default as mockup} from '@/../mockup_data';
@@ -34,6 +34,29 @@ export async function setTransactions({commit}, accountId) {
         .catch(err => {
             console.log(err)
         });
+
+}
+
+export async function setCategories({state, commit}) {
+
+    if(state.categories){
+        // Request Object
+        const requestBody = JSON.stringify({
+            requestData: {}
+        })
+
+        await axios.post('api/categories/read_categories.php', requestBody, requestConfig)
+            .then(res => {
+                // console.log(res)
+                const { payload } = res.data
+                // const categories = JSON.parse(payload)
+                console.log(payload)
+                commit(SET_CATEGORIES, payload);
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    }
 
 }
 

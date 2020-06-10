@@ -78,7 +78,7 @@
                 'updateAccountBalance'
             ]),
             loadCategoriesIntoForm(){
-                Object.values(this.categories).forEach(category =>{
+                Object.values(this.getCategories).forEach(category =>{
                     let categoryOption = {value: category.id, text:category.title}
                     this.options.push(categoryOption)
                 })
@@ -120,15 +120,6 @@
                 this.updateAccountBalance({accountId:this.accountId, amount:newTransactionAmount})
             },
             saveNewTransaction() {
-                // const transactionFullObject= Object.assign(this.transactionObject, {categories: this.selectedCategory})
-                // const dataToSend = {
-                //     transaction: transactionFullObject,
-                //     accountId: this.accountId
-                // }
-                // console.log(dataToSend)
-                // this.createTransaction(dataToSend).then(() => {
-                //     this.resetAndGo();
-                // });
 
                 // New Transaction
                 const transactionFullObject= Object.assign(this.transactionObject, {categories: this.selectedCategory})
@@ -136,7 +127,7 @@
                     transaction: transactionFullObject,
                     accountId: this.accountId
                 }
-                console.log(dataToSend)
+                console.log(JSON.stringify((dataToSend)))
                 this.createTransaction(dataToSend).then(() => {
                     this.resetAndGo();
                 });
@@ -172,7 +163,7 @@
         },
         computed: {
             ...mapGetters([
-                'getTransactionById'
+                'getTransactionById','getCategories'
             ])
         },
         watch: {

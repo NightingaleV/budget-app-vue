@@ -20,4 +20,7 @@ export default {
         // console.log(Object.values(state.transactions))
         return state.transactions ? Object.values(state.transactions).filter((transaction) => { return (transaction.accountId === accountId) && (transaction.categories.includes(categoryId))}).length : [];
     },
+    getCategories: (state) => {
+        return state.categories;
+    },
 };

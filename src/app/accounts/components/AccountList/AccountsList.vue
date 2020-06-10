@@ -54,13 +54,14 @@
         methods: {
             ...mapActions([
                 'setAccounts',
-                'deleteAccount'
+                'deleteAccount','setCategories'
             ]),
         },
         mounted() {
             // this.$store.dispatch('setAccounts');
             // this.$store.dispatch('accounts/setAccounts');
             this.setAccounts(this.getUserObject);
+            this.setCategories();
         },
         computed: {
             ...mapState({

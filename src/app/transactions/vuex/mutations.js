@@ -5,6 +5,7 @@ import {
     UPDATE_TRANSACTION,
     // UPDATE_TRANSACTION_AMOUNT,
     DELETE_TRANSACTION,
+    SET_CATEGORIES
 } from './mutation-types';
 
 export default {
@@ -15,6 +16,12 @@ export default {
      */
     [SET_TRANSACTIONS](state, payload) {
         state.transactions = payload;
+        // Vue.set(state, 'accounts', payload)
+        // Vue.set(state.accounts, payload. , payload)
+        // Object.values(state.accounts).forEach((o) => { o.balance = parseFloat(o.balance); });
+    },
+    [SET_CATEGORIES](state, payload) {
+        state.categories = payload;
         // Vue.set(state, 'accounts', payload)
         // Vue.set(state.accounts, payload. , payload)
         // Object.values(state.accounts).forEach((o) => { o.balance = parseFloat(o.balance); });
