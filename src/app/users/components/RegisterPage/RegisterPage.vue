@@ -91,12 +91,12 @@
             async register() {
                 console.log(this.userObject)
                 await this.registerUser(this.userObject).then((res) => {
-                    if(res.response === 'duplicated'){
+                    if(res.response === 'success'){
+                        this.resetAndGo();
+                    } else {
                         console.log(res);
                         this.showAlert = true
                         this.alertMsg = 'User with this email already exists. '
-                    } else {
-                        this.resetAndGo();
                     }
                 }).catch(err => {
                     console.log(err)
