@@ -60,13 +60,13 @@
         mounted() {
             // this.$store.dispatch('setAccounts');
             // this.$store.dispatch('accounts/setAccounts');
-            this.setAccounts();
+            this.setAccounts(this.getUserObject);
         },
         computed: {
             ...mapState({
                 'accounts': state => state.accounts.accounts
             }),
-            ...mapGetters(['getAccountsList'])
+            ...mapGetters(['getAccountsList','getUserObject'])
         }
     }
 </script>

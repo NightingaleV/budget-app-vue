@@ -30,10 +30,9 @@ export default {
         account.balance = parseFloat(balance);
         Vue.set(state.accounts, account.id, account)
     },
-    [UPDATE_ACCOUNT_BALANCE](state, {accountId, amount}) {
+    [UPDATE_ACCOUNT_BALANCE](state, {accountId, balance}) {
         let changingAccount = state.accounts[accountId]
-        changingAccount.balance = parseFloat(changingAccount.balance);
-        changingAccount.balance += parseFloat(amount);
+        changingAccount.balance = parseFloat(balance);
         Vue.set(state.accounts, accountId, changingAccount)
     },
     [DELETE_ACCOUNT](state, {account}) {

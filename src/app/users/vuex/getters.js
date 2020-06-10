@@ -11,5 +11,8 @@ export default {
     },
     getUserEmail: (state) => {
         return state.user.email || null
+    },
+    getUserObject: (state) => {
+        return state.user || null
     }
 };

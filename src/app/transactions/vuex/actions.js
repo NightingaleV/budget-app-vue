@@ -21,7 +21,6 @@ export async function setTransactions({commit}, accountId) {
 
     // Request Object
     const requestBody = JSON.stringify({
-        user:'vito',
         requestData: {accountId}
     })
 
@@ -44,8 +43,6 @@ export async function createTransaction({commit}, {transaction, accountId}) {
 
     // Request Object
     const requestBody = JSON.stringify({
-        // Todo user
-        user: 'vito',
         requestData: transactionWithIdentifiers
     })
     console.log(requestBody)
@@ -66,7 +63,6 @@ export async function updateTransaction({commit}, data) {
     console.log(data)
     // Request Object
     const requestBody = JSON.stringify({
-        user: 'vito',
         requestData: data
     })
     console.log(requestBody)
@@ -86,7 +82,6 @@ export async function deleteTransaction({commit}, data) {
     console.log(data)
     // Request Object
     const requestBody = JSON.stringify({
-        user: 'vito',
         requestData: data
     })
     console.log(requestBody)

@@ -34,10 +34,6 @@
                     <b-button type="reset" variant="danger" v-if="!editing">Reset</b-button>
                 </b-form>
             </b-card>
-
-            <b-card class="mt-3" header="Form Data Result">
-                <pre class="m-0">{{ accountObject }}</pre>
-            </b-card>
         </div>
     </div>
 </template>
@@ -57,7 +53,7 @@
         },
         // Update Account
         mounted() {
-            this.setAccounts()
+            this.setAccounts(this.getUserObject)
             if(this.accountId){
                 // if props exist then its considered update
                 this.loadAccount()
@@ -75,17 +71,15 @@
             },
             onSubmit(evt) {
                 evt.preventDefault()
-                // alert(JSON.stringify(this.form))
-                // this.saveNewAccount()
                 this.editing ? this.saveAccount() : this.saveNewAccount()
             },
             saveAccount(){
-                this.updateAccount(this.accountObject).then(() => {
+                this.updateAccount({user:this.getUserObject, data: this.accountObject}).then(() => {
                     this.resetAndGo();
                 });
             },
             saveNewAccount () {
-                this.createAccount(this.accountObject).then(() => {
+                this.createAccount({user:this.getUserObject, data: this.accountObject}).then(() => {
                     this.resetAndGo();
                 });
             },
@@ -102,7 +96,7 @@
             // Updating
             loadAccount(){
                 let instance = this
-                this.setAccounts().then(()=>{
+                this.setAccounts(this.getUserObject).then(()=>{
                     // let accountToUpdate = instance.getAccountById(instance.accountId);
                     let accountToUpdate = instance.getAccountById(instance.accountId);
                     if(accountToUpdate){
@@ -118,7 +112,7 @@
         },
         computed: {
             ...mapGetters([
-                'getAccountById'
+                'getAccountById','getUserObject'
             ])
         },
         watch: {
